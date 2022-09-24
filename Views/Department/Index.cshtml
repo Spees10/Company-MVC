@@ -1,0 +1,112 @@
+﻿@model IQueryable<WebApplication7.Models.DepartmentVM>
+
+@using Microsoft.Extensions.Localization
+@using WebApplication7.Resource.Department
+
+@inject IStringLocalizer<SharedResource> SharedLocalizer
+
+@{
+    ViewBag.Title = SharedLocalizer["Department"];
+    var Culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+
+@*<link href="~/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />*@
+
+
+
+@if (Culture == "ar-EG")
+{
+    <h3 id="Myh">
+        <a asp-controller="Department" asp-action="Index" asp-route-culture="en-US">@SharedLocalizer["English"]</a>
+    </h3>
+}
+
+@if (Culture == "en-US")
+{
+    <h3 id="Myh">
+        <a asp-controller="Department" asp-action="Index" asp-route-culture="ar-EG">@SharedLocalizer["Arabic"]</a>
+    </h3>
+}
+
+<br />
+
+<h2 id="Myh2">@SharedLocalizer["WTD"]</h2>
+
+
+@*<center>
+        <h4>@ViewData["x"]</h4>
+        <h4>@ViewBag.y</h4>
+        <h4>@TempData["z"]</h4>
+    </center>*@
+
+
+@*<center>
+
+        @foreach (var item in ViewBag.data)
+        {
+            <h3>@item</h3>
+        }
+
+    </center>*@
+
+
+@*<ul>
+
+        @foreach (var item in ViewBag.data)
+        {
+            <li>@item</li>
+        }
+
+    </ul>*@
+
+
+@*<select class="form-control">
+
+        <option>Choose Name</option>
+
+        @foreach (var item in ViewBag.data)
+        {
+            <option>@item</option>
+        }
+
+    </select>*@
+
+
+@*<table class="table table-striped table-bordered text-center">
+        <tr>
+            <th class="text-center">Name</th>
+        </tr>
+
+        @foreach (var item in ViewBag.data)
+        {
+            <tr>
+                <td>@item</td>
+            </tr>
+        }
+
+    </table>*@
+
+
+<a asp-controller="Department" asp-action="Create" class="btn btn-primary">@SharedLocalizer["AddDepartment"]</a>
+
+<table class="table table-striped table-bordered text-center">
+    <tr>
+        @*<th class="text-center">Id</th>*@
+        <th class="text-center">@SharedLocalizer["DepartmentName"]</th>
+        <th class="text-center">@SharedLocalizer["DepartmentCode"]</th>
+        <th class="text-center">@SharedLocalizer["Edit"]</th>
+        <th class="text-center">@SharedLocalizer["Delete"]</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>@item.Id</td>*@
+            <td>@item.DepartmentName</td>
+            <td>@item.DepartmentCode</td>
+            <td><a asp-controller="Department" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">@SharedLocalizer["Edit"]</a></td>
+            <td><a asp-controller="Department" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">@SharedLocalizer["Delete"]</a></td>
+        </tr>
+    }
+
+</table>

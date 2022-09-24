@@ -1,0 +1,65 @@
+﻿@model WebApplication7.Models.DepartmentVM
+
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Department</h2>
+
+
+@*HTML
+
+    HTML Helper
+
+    Tag Helper*@
+
+
+
+@*<form action="/Department/Create" method="post" class="form-group">
+
+        <label>Department Name</label>
+        <input type="text" name="DepartmentName" class="form-control" />
+
+        <br />
+
+        <label>Department Code</label>
+        <input type="text" name="DepartmentCode" class="form-control" />
+
+        <br />
+
+        <center>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </center>
+
+    </form>*@
+
+
+
+
+@*@using (Html.BeginForm("Create","Department",FormMethod.Post , new { id = "x" , @class = "y form-group" }))
+    {
+
+
+        @Html.TextBoxFor(Model => Model.DepartmentName)
+
+    }*@
+
+
+<form asp-controller="Department" asp-action="Delete" method="post" class="form-group">
+
+    <label asp-for="DepartmentName">Department Name</label>
+    <input type="text" asp-for="DepartmentName" disabled class="form-control" />
+    <br />
+
+    <label asp-for="DepartmentCode">Department Code</label>
+    <input type="text" asp-for="DepartmentCode" disabled class="form-control" />
+
+    <br />
+
+    <center>
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </center>
+
+</form>
+

@@ -1,0 +1,173 @@
+﻿@model IQueryable<WebApplication7.Models.EmployeeVM>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="~/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- JQuery DataTable Css -->
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="~/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2 id="Myh2">aaaa</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-center table-striped table-hover js-basic-example dataTable ">
+
+                                <thead>
+                                    <tr>
+                                        @*<th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>*@
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                        <th class="text-center">aa</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+
+                                            @*<td>@item.Name</td>
+                                            <td>@item.Salary</td>
+                                            <td>@item.Address</td>
+                                            <td>@item.HireDate.Date.ToShortDateString()</td>
+                                            <td>@item.Email</td>*@
+                                            <td>@item.IsActive</td>
+                                            <td>@item.Notes</td>
+                                            <td>@item.DepartmentId</td>
+                                            <td>@item.DistrictId</td>
+
+                                            <td><a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">aa</a></td>
+                                            <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">aa</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<ul>
+            @foreach (var item in department.Get())
+            {
+                <li>@item.DepartmentName</li>
+            }
+        </ul>
+
+        <ul>
+            @foreach (var item in emp.Get())
+            {
+                <li>@item.Name</li>
+            }
+        </ul>*@
+
+
+    @*Enter Name <input type="text" id="txt1" />
+        <input type="button" value="Click ME" id="btn" />
+
+        <div id="MyDiv"></div>*@
+
+
+
+
+    @*<script src="~/plugins/jquery/jquery.js"></script>
+        <script>
+
+
+            $(function () {
+
+                $("#btn").click(function () {
+
+
+                    var Name = $("#txt1").val();
+
+                    $.ajax({
+
+                        type: "POST",
+                        url: "/test1/Display",
+                        data: { name: Name },
+                        success: function (res) {
+
+                            $("#MyDiv").text(res);
+                        }
+
+                    });
+
+
+                });
+
+            });
+
+        </script>*@
+    <!-- Jquery Core Js -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="~/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+
+
+    <script>
+
+        
+            $(function () {
+                $('.js-basic-example').DataTable({
+                    responsive: true,
+                    paging: true,
+                    pageLength: 5,
+                    bSort: true,
+                    bFilter: true,
+                    //bLengthChange: false,
+                    //bInfo: false,
+                    lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+
+                });
+            });
+
+
+    </script>
+</body>
+</html>
